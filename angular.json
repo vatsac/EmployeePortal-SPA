@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "EmployeePortal-SPA"
+    }
+  },
+  "defaultProject": "EmployeePortal-SPA",
+  "cli": {
+    "analytics": false
+  }
 }
