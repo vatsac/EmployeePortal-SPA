@@ -9,7 +9,8 @@ import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BsDropdownModule, PaginationModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule, TabsModule} from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -59,6 +60,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     BsDropdownModule.forRoot(),
