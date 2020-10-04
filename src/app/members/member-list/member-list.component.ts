@@ -24,7 +24,7 @@ pagination: Pagination;
       this.pagination = data['users'].pagination;
     });
     this.userParams.minAge = 0;
-    this.userParams.maxAge = 99;
+    this.userParams.maxAge = 38;
     this.userParams.orderBy = 'lastActive';
 
   }
