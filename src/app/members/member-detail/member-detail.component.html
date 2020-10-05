@@ -27,8 +27,8 @@
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-          <button class="btn btn-primary w-100">Like</button>
-          <button class="btn btn-success w-100" >Message</button>
+          <button class="btn btn-primary w-100" (click)="sendLike(user.id)">Like</button>
+          <button class="btn btn-success w-100" (click)="selectTab(3)">Message</button>
         </div>
       </div>
     </div>
@@ -37,13 +37,13 @@
       <div class="tab-panel">
            <tabset class="member-tabset" #memberTabs>
             <tab heading="About {{user.knownAs}}">
-              <h4 *ngIf="user.introduction">Description</h4>
+              <h4 *ngIf="user.introduction">Introduction</h4>
               <p>{{user.introduction}}</p>
-              <h4 *ngIf="user.lookingFor">Ambition</h4>
+              <h4 *ngIf="user.lookingFor">Designation</h4>
               <p>{{user.lookingFor}}</p>
             </tab>
             <tab heading="Skills">
-              <h4 *ngIf="user.interests">Favourite Skill</h4>
+              <h4 *ngIf="user.interests">Primary Skill</h4>
               <p>{{user.interests}}</p>
             </tab>
             <tab heading="Photos">

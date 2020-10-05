@@ -42,11 +42,11 @@
           <tabset class="member-tabset">
             <tab heading="Edit Profile">
               <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()" >
-                <h4>Description</h4>
+                <h4>Introduction</h4>
                 <textarea name="introduction" rows="6" class="form-control" [(ngModel)]="user.introduction"></textarea>
-              <h4>Ambition</h4>
+              <h4>Primary Skills</h4>
               <textarea name="lookingFor" rows="6" class="form-control" [(ngModel)]="user.lookingFor"></textarea>
-              <h4>Favourite Skill</h4>
+              <h4>Designation</h4>
               <textarea name="interests" rows="6" class="form-control" [(ngModel)]="user.interests"></textarea>
               <h4>Location Details:</h4>
               <div class="form-inline">
