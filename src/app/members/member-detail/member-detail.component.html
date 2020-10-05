@@ -40,11 +40,11 @@
               <h4 *ngIf="user.introduction">Introduction</h4>
               <p>{{user.introduction}}</p>
               <h4 *ngIf="user.lookingFor">Designation</h4>
-              <p>{{user.lookingFor}}</p>
+              <p>{{user.interests}}</p>
             </tab>
             <tab heading="Skills">
               <h4 *ngIf="user.interests">Primary Skill</h4>
-              <p>{{user.interests}}</p>
+              <p>{{user.lookingFor}}</p>
             </tab>
             <tab heading="Photos">
               <ngx-gallery [options]="galleryOptions" [images]="galleryImages" ></ngx-gallery>
