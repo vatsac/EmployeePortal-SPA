@@ -9,36 +9,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  model: any = {};
-  photoUrl: string;
+  model: any = {}; // for login form
+  photoUrl: string; // for photo of user in navbar after login
 
+  // all essential service for this component
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
-    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    // getting photourl from service to display in nav component
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl); 
   }
 
+  // calling login method of auth service
+  // if login successful then we are displaying alertify notification that user is logged in
   login() {
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Logged in successfully');
     }, error => {
       this.alertify.error(error);
     }, () => {
-      this.router.navigate(['/members']);
+      this.router.navigate(['/members']); // redirecting to member page after succesfull login
     });
   }
 
   loggedIn() {
-    return this.authService.loggedIn();
+    return this.authService.loggedIn(); // calling logged method of user service, generally checking token available or not
   }
 
+  // when logout click event is fired from template form we are removing token from localstorage of browser.
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.authService.decodedToken = null;
     this.authService.currentUser = null;
     this.alertify.message('logged out');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home']); // navigating to home component after logout
   }
 
 }

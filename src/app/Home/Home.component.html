@@ -1,3 +1,8 @@
+
+<!-- 1. In below div we are displaying theme of or project
+    2. There is button named "Register" that is used for toggling to signup form and vice-versa 
+-->
+
 <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
     <h1>Find your Dream Project</h1>
@@ -7,6 +12,10 @@
       <button class="btn btn-info btn-lg">Learn more</button>
     </div>
   </div>
+  <!-- 
+    1. Below is the cancel button for sign up form.
+    2. Here there is event fireed from register component to toggle between above and sign up form
+   -->
 
   <div *ngIf="registerMode" class="container">
     <div class="row justify-content-center">

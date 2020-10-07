@@ -1,3 +1,7 @@
+<!-- 
+  1. Creating Inbox template
+  2. Filtering message according to Unread, Inbox and Outbox
+ -->
 <div class="container mt-5">
   <div class="row">
     <div class="btn-group">
@@ -13,10 +17,16 @@
     </div>
   </div>
 
+  <!-- 
+    Render if there is no message for that particular user
+   -->
   <div class="row" *ngIf="messages.length == 0">
     <h3>No messages</h3>
   </div>
 
+  <!-- 
+    Formatting message display
+   -->
   <div class="row" *ngIf="messages.length > 0">
     <table class="table table-hover" style="cursor: pointer">
       <tr>
@@ -48,6 +58,10 @@
   </div>
 
 </div>
+
+<!-- 
+  Used pagination module from ngx-bootstrap.
+ -->
 
 <div class="d-flex justify-content-center">
     <pagination [boundaryLinks]="true" 

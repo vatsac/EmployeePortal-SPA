@@ -10,19 +10,19 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./member-card.component.scss']
 })
 export class MemberCardComponent implements OnInit {
-  @Input() user: User;
+  @Input() user: User; // Input property i.e getting user from member list component
 
   constructor(private authService: AuthService, private userService: UserService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
-
+// Calling send like function from user service for like functionality
   sendLike(id: number) {
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
       this.alertify.success('You have liked: ' + this.user.knownAs);
     }, error => {
-      this.alertify.error(error);
+      this.alertify.error('You have already liked: ' + this.user.knownAs);
     });
   }
 }

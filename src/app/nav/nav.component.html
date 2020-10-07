@@ -1,6 +1,17 @@
+<!-- 
+   1. Creating navbar template
+   2. redirect user to different component
+   3. we are showing route link according to login status of user
+   4. If User are not log in then we are showing route link "Employee Portal" and Login form
+   5. If user are logged in then we are showing Employees, Connections and Messages route link.
+ -->
+
 <nav class="navbar navbar-expand-md navbar-dark  bg-primary">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']"  >Employee Portal</a>
+  <!-- 1.Route Link after login
+      2. Checking for JWT token  
+    -->
 
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
@@ -14,6 +25,13 @@
       </li>
   </ul>
 
+  <!-- 
+    1. Displaying after Login.
+    2. Showing User Main Photo or default photo if no photo of user is there.
+    3. Using Dropdown module from ngx-bootstrap
+    4. For Welcome Message we are decoding the token using auth0/angular-jwt package
+    5. After decoding we are using claims for displaying Name of user.
+   -->
   <div *ngIf="loggedIn()" class="dropdown" dropdown>
     <span class="mr-1">
       <img src="{{photoUrl || '../../assets/user.png'}}" alt="">
@@ -22,6 +40,11 @@
       Welcome {{authService.decodedToken?.unique_name | titlecase}}
     </a>
 
+   <!-- 1. Dropdown 
+        2. Two Field 
+        3. First Field for Edit Profile for route the user to edit template
+        4. Second Field for logout -> Here we are removing token from localstorage of
+           Web Browser and redirecting user to Home Page. -->
   <div class="dropdown-menu mt-3" *dropdownMenu>
     <a class="dropdown-item" [routerLink]="['/member/edit']">
       <i class="fa fa-user"></i>Edit Profile</a>
@@ -30,7 +53,10 @@
       <i class="fa fa-sign-out"></i>Logout</a>
   </div>
 </div>
-
+<!-- 1.If User are Logged out then we are displaying login form in navbar
+      2. Using template driven form
+      3. login button will be disabled if form is invalid like text field is empty.
+      -->
     <form *ngIf="!loggedIn()"  #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" >
       <input class="form-control mr-sm-2" type="text" name="username" 
       placeholder="Username" required [(ngModel)]="model.username" >

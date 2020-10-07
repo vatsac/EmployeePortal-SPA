@@ -1,3 +1,12 @@
+
+<!-- 
+     1. Below we are using reactive form for registration.
+     2. We are using Form module touched,dirty,valid,error for displaying validation
+     message to end user.
+     3. Button will be disabled till form is correctly filled for that we have used 
+     valid property from form module.
+    -->
+
 <form [formGroup]="registerForm" (ngSubmit)="register()">
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>

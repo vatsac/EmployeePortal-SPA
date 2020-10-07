@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from './_interceptors/loading.interceptors';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { ListsResolver } from './_resolvers/lists.resolver';
@@ -11,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
@@ -35,6 +36,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -63,6 +65,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     NgxGalleryModule,
@@ -87,7 +90,8 @@ export function tokenGetter() {
     MemberEditResolver,
     PreventUnsavedChanges,
     ListsResolver,
-    MessagesResolver
+    MessagesResolver,
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

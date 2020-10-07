@@ -1,7 +1,9 @@
+<!--             Full Individual detail template                                       -->
 <div class="container mt-4">
   <div class="row">
     <h1>{{user.knownAs}}'s Profile</h1>
   </div>
+  <!-- Here photo is display is photourl is present or default photo will be shown -->
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
@@ -16,8 +18,7 @@
             <p>{{user.age}}</p>
           </div>
           <div>
-            <strong> Last Active:</strong>
-          
+            <strong> Last Active:</strong>   
              <p>{{user.lastActive | timeAgo }}</p> 
           </div>
           <div>
@@ -25,6 +26,11 @@
             <p>{{user.created  | date: 'mediumDate'}}</p>
           </div>
         </div>
+        <!-- 
+          1.Button for like and message is rendered 
+           2.If Message button is fired then tab 3 is displayed
+           -->
+
         <div class="card-footer">
           <div class="btn-group d-flex">
           <button class="btn btn-primary w-100" (click)="sendLike(user.id)">Like</button>
@@ -33,6 +39,10 @@
       </div>
     </div>
   </div>
+  <!-- 
+    1. Here we have used tabular module from ngx-bootstrap
+    2. There are three tab according to detail
+   -->
     <div class="col-sm-8">
       <div class="tab-panel">
            <tabset class="member-tabset" #memberTabs>
@@ -46,9 +56,11 @@
               <h4 *ngIf="user.interests">Primary Skill</h4>
               <p>{{user.lookingFor}}</p>
             </tab>
+<!-- 1.For member's photo we have used ngx-gallery-9 for add slide show to member's photo -->
             <tab heading="Photos">
               <ngx-gallery [options]="galleryOptions" [images]="galleryImages" ></ngx-gallery>
             </tab>
+<!--                      Message Tab                                                                      -->            
             <tab heading="Messages">
               <app-member-messages [recipientId]="user.id"></app-member-messages>
             </tab>
